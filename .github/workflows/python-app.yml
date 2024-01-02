@@ -10,10 +10,16 @@ permissions:
   contents: read
 
 jobs:
+  integration: 
+   uses: asad123/03_05_challenge_delivery_repo/.github/workflows/python-app.yml@main
+   permissions:
+    contents: read
+    
   build:
+    needs: [integration]
 
     runs-on: ubuntu-latest
-
+ 
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
